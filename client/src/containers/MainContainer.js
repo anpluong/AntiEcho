@@ -23,7 +23,7 @@ class MainContainer extends Component {
           <p id="header">The Spectrum Report</p>
         </div>
         <SteeringContainer sliderValue={this.props.main.sliderValue} id="steeringContainer"/>
-        <NewsContainer main={this.props.main} id="newsContainer"/>
+        <NewsContainer main={this.props.main} id="newsContainer" />
       </div>
     );
   };
