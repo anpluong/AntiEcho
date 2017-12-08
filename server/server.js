@@ -9,6 +9,9 @@ const newsAPI = require('./db/newsAPI');
 
 
 mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@ds133816.mlab.com:33816/pumanews`);
+// mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@ds133816.mlab.com:33816/pumanews`);
+mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@ds133816.mlab.com:33816/pumanews`);
+
 mongoose.connection.once('open', () => {
     console.log('Connected with MongoDB MLab');
 });
