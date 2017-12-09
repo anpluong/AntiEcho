@@ -29,4 +29,4 @@ class MainContainer extends Component {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
+module.exports = connect(mapStateToProps, mapDispatchToProps)(MainContainer);

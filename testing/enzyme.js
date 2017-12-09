@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 const Enzyme = require('enzyme');
 const Adapter = require('enzyme-adapter-react-15.4');
-const shallow = Enzyme.shallow;
+const { shallow, mount } = Enzyme;
 const React = require('react');
 const NewsFeedItem = require('../client/src/components/NewsFeedItem');
 const Header = require('../client/src/components/Header');
@@ -12,9 +12,11 @@ const Search = require('../client/src/components/Search');
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('React unit tests', () => {
+
+  // NewsFeedItem component tests
   describe('<NewsFeedItem />', () => {
     let wrapper;
-    let url = 'http://www.foxnews.com/us/2017/12/05/gif-jump-roping-pylons-stumps-internet.html'
+    let url = 'http://www.foxnews.com/us/2017/12/05/gif-jump-roping-pylons-stumps-internet.html';
 
     before(() => {
       wrapper = shallow(<NewsFeedItem
@@ -34,13 +36,14 @@ describe('React unit tests', () => {
       expect(wrapper.type()).to.equal('div');
       expect(wrapper.props().id).to.equal('card');
     });
-    
+
     it('Renders a news feed item with a child "a" element with href', () => {
       expect(wrapper.props().children.type).to.equal('a');
       expect(wrapper.props().children.props.href).to.equal(url);
     });
   });
   
+  // Search component tests
   describe('<Search />', () => {
     let wrapper;
 
@@ -59,10 +62,11 @@ describe('React unit tests', () => {
     });
 
     it('Renders a TextField as child of search field with a default search message', () => {
-      expect(wrapper.props().children[0].props.hintText.to.equal('Search here for news'));
+      expect(wrapper.props().children[0].props.hintText).to.equal('Search here for news');
     });
   });
-
+  
+  // PoliticalSlider component tests
   describe('<PoliticalSlider />', () => {
     let wrapper;
 
@@ -74,16 +78,36 @@ describe('React unit tests', () => {
       />);
     });
 
-    
+    it('Renders a PoliticalSlider <div> with id slider', () => {
+      expect(wrapper.type()).to.equal('div');
+      expect(wrapper.props().id).to.equal('slider');
+    });
+
+    it('Renders a Slider as child of PoliticalSlider with a default value of 0', () => {
+      expect(wrapper.props().children[0].props.defaultValue).to.equal(0);
+    });
   });
 
-  // describe('<Header />', () => {
-  //   let wrapper;
+  // Header component tests
+  describe('<Header />', () => {
+    let wrapper;
 
-  //   before(() => {
-  //     wrapper = shallow(<Header 
-        
-  //     />);
-  //   });
-  // });
+    before(() => {
+      wrapper = shallow(<Header
+        steering={'testing search text'}
+        onSubmit={() => {}}
+        handleSearch={() => {}}
+        handleKeyPress={() => {}}
+      />);
+    });
+
+    it('Renders a Header <div> with no id', () => {
+      expect(wrapper.type()).to.equal('div');
+      expect(wrapper.props().id).to.equal(undefined);
+    });
+
+    it('Renders a Search as child of Header with a default value', () => {
+      expect(wrapper.props().children.props.steering).to.equal('testing search text');
+    });
+  });
 });

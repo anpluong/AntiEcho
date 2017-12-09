@@ -1,4 +1,5 @@
 import * as types from '../constants/actionTypes';
+import fetch from 'isomorphic-fetch';
 // const request = require('request');
 
 export const searchArticles = (response) => ({
@@ -30,32 +31,31 @@ export function handleKeyPress(event) {
   }
 }
 
-export function onSubmit() {
-  return function (dispatch, getState) {
-    const stateText = getState().steering.textValue;
-    const request = new Request(`http://localhost:3000/api/articles/?q=${stateText}`);
-    return fetch(request)
-      .then(response => response.json())
-      .then(json => dispatch(searchArticles(json)))
-      .catch(err => {
-        console.log(err);
-      })
-  }
-}
-
 export const fetchPosts = () => ({
   type: types.FETCH_POSTS,
 });
 
-export function onLoad() {
+export function onSubmit() {
   return function (dispatch, getState) {
-    // const stateText = getState().steering.textValue;
-    const request = new Request(`http://localhost:3000/api/top`);
-    return fetch(request)
+    const stateText = getState().steering.textValue;
+    dispatch(fetchPosts());
+    return fetch(`http://localhost:3000/api/articles/?q=${stateText}`)
       .then(response => response.json())
       .then(json => dispatch(searchArticles(json)))
       .catch(err => {
         console.log(err);
-      })
-  }
+      });
+  };
+}
+
+export function onLoad() {
+  return function (dispatch, getState) {
+    dispatch(fetchPosts());
+    return fetch(`http://localhost:3000/api/top`)
+      .then(response => response.json())
+      .then(json => dispatch(searchArticles(json)))
+      .catch(err => {
+        console.log(err);
+      });
+  };
 }
