@@ -14,4 +14,4 @@ const Header = props => {
   );
 };
 
-export default Header;
+module.exports = Header;

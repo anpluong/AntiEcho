@@ -25,4 +25,4 @@ const PoliticalSlider = (props) => {
   );
 };
 
-export default PoliticalSlider;
+module.exports = PoliticalSlider;
