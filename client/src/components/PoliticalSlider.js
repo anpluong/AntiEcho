@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from 'material-ui/Slider';
-import logo from './red-blue-line.png'; 
+// import logo from './red-blue-line.png'; 
 
 const PoliticalSlider = (props) => {
   // console.log(props.sliderValue);
@@ -17,7 +17,7 @@ const PoliticalSlider = (props) => {
           props.filterArticles();
         }}
       />
-      <img id='red-blue-line' src={logo}/>
+      <img id='red-blue-line' src={'./red-blue-line.png'}/>
       <div id="sliderText">
         Adjusting the slider modifies the political leaning of the news below. 
       </div>

@@ -29,4 +29,4 @@ const Search = props => {
   );
 };
 
-export default Search;
+module.exports = Search;
