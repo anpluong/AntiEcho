@@ -5,18 +5,21 @@ const articleController = {};
 
 articleController.addToHeadlines = (req, res, next) => { // needs to be fixed
     const result = res.locals.headlineData;
+
     Articles.create(result);
+    //console.log(res.locals.headlineData);
     next();
 };
 
+
 articleController.addToQueries = (req, res, next) => {
     const search = req.query.q;
-
+    //console.log(req.query.q);
     const result = {
         query: search,
         articles: res.locals.apiData,
     };
-
+   
     Queries.create(result);
     next();
 };

@@ -10,6 +10,6 @@ render(
     <MuiThemeProvider>
       <App />
     </MuiThemeProvider>
-  </Provider>
+  </Provider>, 
   ,document.getElementById('app'),
 );

@@ -14,15 +14,9 @@ const articleSchema = new Schema({
     publishedAt: String,
 });
 
-// const sourceSchema = new Schema({
-//     source: {
-//         id: String,
-//         name: String,
-//     },
-//     articles: [articleSchema],
-// });
 
-// const Articles = mongoose.model('Articles', sourceSchema);
+module.exports = {
+    model: mongoose.model('TopHeadlines', articleSchema),
+    schema: articleSchema
+}
 
-
-module.exports = mongoose.model('TopHeadlines', articleSchema);
