@@ -8,24 +8,24 @@ const NewsFeedItem = props => {
       <Card style={{
         width: '100%'
       }}>
-    <CardHeader
-      title={props.title}
-      subtitle={props.source}
-      titleStyle={{
-        fontSize: '18px',
-      }}
-      textStyle={{paddingRight: '0px'}}
-    />
-    <CardMedia>
-      <img src={props.urlToImage} alt="" />
-    </CardMedia>
-    <CardTitle
-      // title={props.source} subtitle={props.author}
-    />
-    <CardText>
-      {props.description}
-    </CardText>
-  </Card>
+        <CardHeader
+          title={props.title}
+          subtitle={props.source}
+          titleStyle={{
+            fontSize: '18px',
+          }}
+          textStyle={{paddingRight: '0px'}}
+        />
+        <CardMedia>
+          <img src={props.urlToImage} alt="" />
+        </CardMedia>
+        <CardTitle
+          // title={props.source} subtitle={props.author}
+        />
+        <CardText>
+          {props.description}
+        </CardText>
+      </Card>
       {/* <Card>
         <CardHeader
           title={props.title}
@@ -45,7 +45,9 @@ const NewsFeedItem = props => {
   );
 };
 
-export default NewsFeedItem;
+// export default NewsFeedItem;
+
+module.exports = NewsFeedItem;
 
 // {/* <NewsFeedItem
 //   key={i}
