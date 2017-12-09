@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import MainContainer from './containers/MainContainer';
 import { Route, Link, Switch } from 'react-router-dom';
 import Login from './components/Login';
-import Signup from './components/Signup';
 
 class App extends Component {
 
@@ -21,7 +20,6 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={MainContainer} />
             <Route path='/login' component={Login} />
-            {/* <Route path='/signup' component={Signup} /> */}
           </Switch>
         </div>
       </div>
