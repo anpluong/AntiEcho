@@ -11,18 +11,8 @@ const articleSchema = new Schema({
     description: String,
     url: String,
     urlToImage: String,
-    publishedAt: String,
+    publishedAt: String
 });
-
-// const sourceSchema = new Schema({
-//     source: {
-//         id: String,
-//         name: String,
-//     },
-//     articles: [articleSchema],
-// });
-
-// const Articles = mongoose.model('Articles', sourceSchema);
 
 
 module.exports = mongoose.model('TopHeadlines', articleSchema);
