@@ -58,6 +58,12 @@ const mainReducer = (state = initialState, action) => {
         ...state,
         sliderValue: action.payload
       };
+    
+    case types.PERSONALIZE_USER:
+      return {
+        ...state,
+        sliderValue: action.payload.slider,
+      }
 
     case types.FETCH_POSTS:
       return {

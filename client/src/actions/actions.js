@@ -1,5 +1,6 @@
 import * as types from '../constants/actionTypes';
 import fetch from 'isomorphic-fetch';
+import { ADD_FAVORITE } from '../constants/actionTypes';
 // const request = require('request');
 
 export const searchArticles = (response) => ({
@@ -51,7 +52,7 @@ export function onSubmit() {
 export function onLoad() {
   return function (dispatch, getState) {
     dispatch(fetchPosts());
-    return fetch(`http://localhost:3000/api/top`)
+    return fetch('http://localhost:3000/api/top')
       .then(response => response.json())
       .then(json => dispatch(searchArticles(json)))
       .catch(err => {
@@ -59,3 +60,35 @@ export function onLoad() {
       });
   };
 }
+
+export const personalizeUser = (data) => ({
+  type: types.PERSONALIZE_USER,
+  payload: data,
+});
+
+export const setSlider = () => ({
+  type: types.SET_SLIDER,
+});
+
+export const addFavorite = (favorite) => ({
+  type: types.ADD_FAVORITE,
+  payload: favorite,
+});
+
+export const logout = () => ({
+  type: types.LOGOUT,
+});
+
+export const login = () => {
+  return (dispatch, getState) => {
+    return fetch('http://localhost:3000/user', {
+      method: 'POST',
+      body: { email: getState().user.email },
+    })
+      .then(response => response.json())
+      .then(json => dispatch(personalizeUser(json)))
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
