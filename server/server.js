@@ -6,8 +6,9 @@ const app = express();
 const mongoose = require('mongoose');
 const articleController = require('./db/articleController');
 const newsAPI = require('./db/newsAPI');
+const userController = require('./db/userController');
 
-// mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@ds133816.mlab.com:33816/pumanews`);
+
 mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@ds133816.mlab.com:33816/pumanews`);
 
 mongoose.connection.once('open', () => {
@@ -21,9 +22,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get('/api/articles', newsAPI.apiQuery, articleController.addToQueries, articleController.timeoutRemoveQuery);
-
 app.get('/api/top', newsAPI.apiHeadlines, articleController.addToHeadlines, articleController.timeoutRemoveHeadlines);
-
+app.post('/user', userController.findOneOrCreate);
 
 app.listen(port);
 console.log(`Server started on PORT:${port}`);

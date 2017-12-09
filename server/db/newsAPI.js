@@ -11,6 +11,7 @@ const dd = today.getDate();
 const mm = today.getMonth() + 1;
 const yyyy = today.getFullYear();
 
+
 newsAPI.apiQuery = (req, res, next) => {
   const options = {
     url: `https://newsapi.org/v2/everything?sources=${sources}&from=${yyyy}-${mm}-${dd - 2}&to=2017-${mm}-${dd}&q=${req.query.q}&apiKey=${process.env.NEWS_APIKEY}`,
@@ -23,6 +24,9 @@ newsAPI.apiQuery = (req, res, next) => {
     next();
   });
 };
+
+// API key b34a080eb8b2409985dad0e0bcdbd7ee
+//API process.env.NEWS_APIKEY
 
 newsAPI.apiHeadlines = (req, res, next) => {
   const options = {
@@ -38,3 +42,5 @@ newsAPI.apiHeadlines = (req, res, next) => {
 };
 
 module.exports = newsAPI;
+
+// key 401c795d049d4281a1724dc40bd2ce6e
