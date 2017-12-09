@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
 const NewsFeedItem = props => {
@@ -26,6 +26,9 @@ const NewsFeedItem = props => {
           {props.description}
         </CardText>
       </Card>
+      <FlatButton className="hidden">
+          Add to Favorites
+      </FlatButton>
       {/* <Card>
         <CardHeader
           title={props.title}
