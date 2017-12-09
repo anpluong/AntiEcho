@@ -4,9 +4,11 @@ const articleSchema = require('./articleModel').schema;
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    facebook_id: String,
-    artist: String,
-    articleCollection: [articleSchema]    
+    email: { type: String, index: true, unique: true, required: true, uniqueCaseInsensitive: true },
+    fullName: String,
+    favorites: [],
+    slider: Number,
+    sources: {}    
 });
 
 
