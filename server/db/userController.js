@@ -5,7 +5,7 @@ const userController = {};
 console.log(userController);
 
 userController.findOneOrCreate = (req, res, next) => {
-    User.findOne({facebook_id: "an"}, (err, result) => {
+    User.findOne({ email: req.body.email }, (err, result) => {
         if (result) {
             console.log("hello");
             return res.send('Duplicated ID');
